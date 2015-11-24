@@ -81,9 +81,9 @@ int CALLBACK WinMain(
 		}
 
 		//update x, y and time
-		x += 1931.85 - 1931.85* std::exp(-0.01*time);
+		x = 1931.85 - 1931.85 * std::exp(-0.01*time);
 
-		y -= 98627.74 - 98617.64*std::exp(-0.01*time) - 981 * time;
+		y = 98627.74 - 98617.64 * std::exp(-0.01 * time) - 981 * time;
 
 		//time += tau;
 		
