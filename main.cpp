@@ -16,13 +16,15 @@ int CALLBACK WinMain(
 	)
 {
 	//position of the circle that represents the projectile
-	float x, y, time, tau;
+	float x, y, time, tau, scale;
 
 	//mouse coordinates
 	float mouse_x, mouse_y;
 
-	sf::RenderWindow window(sf::VideoMode(200, 200), "Math coursework");
-	sf::CircleShape shape(2.0f);
+	scale = 10;
+
+	sf::RenderWindow window(sf::VideoMode(400, 400), "Math coursework");
+	sf::CircleShape shape(1.0f * scale);
 
 	//load in a font to draw text on screen
 	sf::Font font;
@@ -81,9 +83,9 @@ int CALLBACK WinMain(
 		}
 
 		//update x, y and time
-		x = 1931.85 - 1931.85 * std::exp(-0.01*time);
+		x = (1931.85 - 1931.85 * std::exp(-0.01*time)) * scale;
 
-		y = window.getSize().y - (98627.74 - 98617.64 * std::exp(-0.01 * time) - 981 * time);
+		y = window.getSize().y - ((98627.74 - 98617.64 * std::exp(-0.01 * time) - 981 * time) * scale );
 
 		//time += tau;
 		
