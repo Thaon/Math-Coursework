@@ -22,7 +22,7 @@ int CALLBACK WinMain(
 	float mouse_x, mouse_y;
 
 	sf::RenderWindow window(sf::VideoMode(200, 200), "Math coursework");
-	sf::CircleShape shape(10.f);
+	sf::CircleShape shape(2.0f);
 
 	//load in a font to draw text on screen
 	sf::Font font;
@@ -37,7 +37,7 @@ int CALLBACK WinMain(
 	tau = 0.1;
 
 	coordinates.setFont(font);
-	coordinates.setPosition(10, 180);
+	coordinates.setPosition(10, 0);
 	coordinates.setCharacterSize(20);
 	coordinates.setColor(sf::Color::White);
 
@@ -83,7 +83,7 @@ int CALLBACK WinMain(
 		//update x, y and time
 		x = 1931.85 - 1931.85 * std::exp(-0.01*time);
 
-		y = 98627.74 - 98617.64 * std::exp(-0.01 * time) - 981 * time;
+		y = window.getSize().y - (98627.74 - 98617.64 * std::exp(-0.01 * time) - 981 * time);
 
 		//time += tau;
 		
@@ -96,14 +96,14 @@ int CALLBACK WinMain(
 		ss2 << y;
 		std::string strY = ss2.str();
 
-		coordinates.setString("x = " + strX + "; y = " + strY);
+		coordinates.setString("x = " + strX + "\ny = " + strY);
 
 		//reset time after a while
 		if (time > 2)
 			time = 0;
 
 		//move the projectile
-		shape.move(x, y);
+		shape.setPosition(x, y);
 
 		window.clear();
 
